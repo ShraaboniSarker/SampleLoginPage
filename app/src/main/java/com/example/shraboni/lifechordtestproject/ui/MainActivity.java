@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shraboni.lifechordtestproject.R;
+import com.example.shraboni.lifechordtestproject.data.CardHistorySource;
 import com.example.shraboni.lifechordtestproject.model.CardRechargeResponseApiError;
 import com.example.shraboni.lifechordtestproject.network.APIService;
 import com.example.shraboni.lifechordtestproject.network.RetrofitClientInstance;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     APIService apiService;
     String cardPinNo;
     String mobileNo;
+    CardHistorySource cardHistorySource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btSubmit = findViewById(R.id.btSubmit);
         card_pin = findViewById(R.id.etCardPin);
         card_mobile = findViewById(R.id.etCardMobile);
+        cardHistorySource = new CardHistorySource(this);
         apiService = RetrofitClientInstance.getRetrofitInstance().create(APIService.class);
 
         card_pin.addTextChangedListener(new TextWatcher() {
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<CardRechargeResponseApiError> call, Response<CardRechargeResponseApiError> response) {
                 if(response.isSuccessful()){
                     String text = response.body().getMessage();
+                    boolean status = cardHistorySource.addMessage(text);
+                    Log.i("CardHistoryHelper", "onResponse:..... "+status);
                     Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
                 }else{
 
