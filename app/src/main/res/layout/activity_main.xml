@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.MainActivity">
+
+    <ImageView
+
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/aponjon_logo"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ti_pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:passwordToggleTint="@android:color/white"
+        >
+
+        <EditText
+            android:id="@+id/etCardPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pin_no"
+            android:inputType="number"
+            app:passwordToggleEnabled="true"
+            android:maxLength="8"
+            android:lines="1"
+            android:fontFamily="sans-serif"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ti_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:passwordToggleTint="@android:color/white">
+
+        <EditText
+            android:id="@+id/etCardMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_mobile_no"
+            android:inputType="number"
+            app:passwordToggleEnabled="true"
+            android:maxLength="11"
+            android:lines="1"
+            android:fontFamily="sans-serif"
+
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btSubmit"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:text="Submit"
+        android:background="@drawable/round_button"
+        android:textColor="@android:color/white" />
+</LinearLayout>
